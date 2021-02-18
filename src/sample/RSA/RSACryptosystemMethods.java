@@ -3,7 +3,7 @@ package sample.RSA;
 import java.util.*;
 
 public class RSACryptosystemMethods {
-    Map<Character, Integer> mapLetters = new Map<Character, Integer>();
+    //Map<Character, Integer> mapLetters = new Map<Character, Integer>();
     public RSACryptosystemMethods() {
     }
 
