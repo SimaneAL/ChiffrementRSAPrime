@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1250.0" style="-fx-background-color: #d6d8da;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <VBox layoutX="655.0" layoutY="81.0" prefHeight="618.0" prefWidth="258.0" style="-fx-border-radius: 10;">
+            <children>
+                <HBox prefHeight="63.0" prefWidth="136.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="p =" wrappingWidth="18.55078125">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="16.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Text>
+                        <TextField fx:id="p" prefHeight="25.0" prefWidth="241.0">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="63.0" prefWidth="136.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="q =" wrappingWidth="19.55078125">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="16.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Text>
+                        <TextField fx:id="q" prefHeight="25.0" prefWidth="248.0">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="63.0" prefWidth="136.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="f =" wrappingWidth="18.55078125">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="16.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Text>
+                        <Label fx:id="f" prefHeight="33.0" prefWidth="236.0" text="0">
+                            <opaqueInsets>
+                                <Insets left="10.0" />
+                            </opaqueInsets>
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </HBox>
+                <Text fill="#33721a" strokeType="OUTSIDE" strokeWidth="0.0" text="Public key :" textAlignment="CENTER" wrappingWidth="113.55078125">
+                    <font>
+                        <Font name="MS Gothic" size="12.0" />
+                    </font>
+                </Text>
+                <HBox prefHeight="56.0" prefWidth="300.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="n =" wrappingWidth="18.55078125">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Text>
+                        <Label fx:id="n" prefHeight="33.0" prefWidth="238.0" text="0">
+                            <opaqueInsets>
+                                <Insets left="10.0" />
+                            </opaqueInsets>
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox prefHeight="63.0" prefWidth="136.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="e =" wrappingWidth="18.55078125">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="16.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Text>
+                        <Label fx:id="e" prefHeight="33.0" prefWidth="240.0" text="0">
+                            <opaqueInsets>
+                                <Insets left="10.0" />
+                            </opaqueInsets>
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <Text fill="#b21313" strokeType="OUTSIDE" strokeWidth="0.0" text="Private key :" textAlignment="CENTER" wrappingWidth="113.55078125">
+                    <font>
+                        <Font name="MS Gothic" size="12.0" />
+                    </font>
+                </Text>
+                <HBox prefHeight="47.0" prefWidth="300.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="d =" wrappingWidth="23.55078125">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="18.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Text>
+                        <Label fx:id="d" prefHeight="33.0" prefWidth="239.0" text="0">
+                            <opaqueInsets>
+                                <Insets left="10.0" />
+                            </opaqueInsets>
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </HBox>
+                <Button mnemonicParsing="false" onAction="#validate" prefHeight="31.0" prefWidth="155.0" style="-fx-background-color: #3c4564;" text="Calculate" textFill="WHITE">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="80.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="MS Gothic" size="13.0" />
+                    </font>
+                </Button>
+                <Text fill="#16124a" strokeType="OUTSIDE" strokeWidth="0.0" text="Random p and q :" textAlignment="CENTER" wrappingWidth="113.55078125">
+                    <font>
+                        <Font name="MS Gothic" size="12.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="20.0" />
+                    </VBox.margin>
+                </Text>
+                <HBox prefHeight="42.0" prefWidth="300.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="p =" wrappingWidth="24.55078125">
+                            <HBox.margin>
+                                <Insets left="10.0" top="15.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Text>
+                        <Label fx:id="randomP" prefHeight="33.0" prefWidth="238.0" text="0">
+                            <opaqueInsets>
+                                <Insets left="10.0" />
+                            </opaqueInsets>
+                            <HBox.margin>
+                                <Insets left="10.0" top="5.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox prefHeight="42.0" prefWidth="300.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="q =" wrappingWidth="24.55078125">
+                            <HBox.margin>
+                                <Insets left="10.0" top="15.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Text>
+                        <Label fx:id="randomQ" prefHeight="33.0" prefWidth="238.0" text="0">
+                            <opaqueInsets>
+                                <Insets left="10.0" />
+                            </opaqueInsets>
+                            <HBox.margin>
+                                <Insets left="10.0" top="5.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="MS Gothic" size="12.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <Button mnemonicParsing="false" onAction="#validateRandom" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: #3c4564;" text="Calculate" textFill="WHITE">
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="80.0" right="20.0" top="20.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="MS Gothic" size="13.0" />
+                    </font></Button>
+                <HBox prefHeight="20.0" prefWidth="300.0" />
+            </children>
+        </VBox>
+        <Label layoutX="162.0" layoutY="14.0" prefHeight="53.0" prefWidth="320.0" style="-fx-border-color: #3c4564; -fx-border-radius: 5;" text="   RSA the cryptosystem" textAlignment="CENTER" textFill="#3c4564">
+            <font>
+                <Font name="MS Gothic" size="26.0" />
+            </font>
+        </Label>
+        <TextArea fx:id="decryptedmessage" layoutX="14.0" layoutY="118.0" prefHeight="200.0" prefWidth="616.0" />
+        <TextArea fx:id="encryptedmessage" layoutX="14.0" layoutY="390.0" prefHeight="207.0" prefWidth="616.0">
+            <font>
+                <Font name="MS Gothic" size="12.0" />
+            </font></TextArea>
+        <Text fill="#ae1717" layoutX="14.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decrypted message :" wrappingWidth="249.13671875">
+            <font>
+                <Font name="MS Gothic" size="19.0" />
+            </font>
+        </Text>
+        <Text fill="#ae1717" layoutX="14.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Encrypted message :" wrappingWidth="226.13671875">
+            <font>
+                <Font name="MS Gothic" size="19.0" />
+            </font>
+        </Text>
+        <Button fx:id="decrypte" layoutX="548.0" layoutY="345.0" mnemonicParsing="false" onAction="#decrypte" prefHeight="29.0" prefWidth="80.0" style="-fx-background-color: #3c4564;" text="Decrypte" textFill="WHITE">
+            <font>
+                <Font name="MS Gothic" size="13.0" />
+            </font></Button>
+        <Button fx:id="encrypte" layoutX="548.0" layoutY="77.0" mnemonicParsing="false" onAction="#encrypte" prefHeight="29.0" prefWidth="80.0" style="-fx-background-color: #3c4564;" text="Encrypte" textFill="#fcf7f7">
+            <font>
+                <Font name="MS Gothic" size="13.0" />
+            </font></Button>
+        <Label layoutX="655.0" layoutY="27.0" prefHeight="63.0" prefWidth="190.0" style="-fx-border-radius: 5;" text="Keys :" textAlignment="RIGHT" textFill="#3c4564">
+            <font>
+                <Font name="MS Gothic" size="26.0" />
+            </font>
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="15.0" top="15.0" />
+            </padding>
+        </Label>
+        <Label layoutX="924.0" layoutY="27.0" prefHeight="63.0" prefWidth="351.0" style="-fx-border-radius: 5;" text="Encrypte/decrypte files" textAlignment="RIGHT" textFill="#3c4564">
+            <font>
+                <Font name="MS Gothic" size="26.0" />
+            </font>
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="15.0" top="15.0" />
+            </padding>
+        </Label>
+        <Button layoutX="997.0" layoutY="151.0" mnemonicParsing="false" onAction="#choseFile" prefHeight="25.0" prefWidth="135.0" text="Chose file">
+            <font>
+                <Font name="MS Gothic" size="12.0" />
+            </font></Button>
+        <Text layoutX="941.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chose your file here : " wrappingWidth="226.13671875">
+            <font>
+                <Font name="MS Gothic" size="19.0" />
+            </font>
+        </Text>
+        <Text layoutX="942.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Encrypte your file here : " wrappingWidth="249.13671875">
+            <font>
+                <Font name="MS Gothic" size="19.0" />
+            </font>
+        </Text>
+        <Button layoutX="1000.0" layoutY="251.0" mnemonicParsing="false" onAction="#encrypteBuffer" prefHeight="25.0" prefWidth="131.0" text="Encrypte buffer">
+            <font>
+                <Font name="MS Gothic" size="12.0" />
+            </font></Button>
+        <Text layoutX="941.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decrypte your file here : " wrappingWidth="249.13671875">
+            <font>
+                <Font name="MS Gothic" size="19.0" />
+            </font>
+        </Text>
+        <Button layoutX="996.0" layoutY="362.0" mnemonicParsing="false" onAction="#decrypteBuffer" prefHeight="25.0" prefWidth="141.0" text="Decrypte buffer">
+            <font>
+                <Font name="MS Gothic" size="12.0" />
+            </font></Button>
+        <Label fx:id="notifs" layoutX="922.0" layoutY="408.0" prefHeight="276.0" prefWidth="290.0" />
+        <Label layoutX="36.0" layoutY="647.0" prefHeight="46.0" prefWidth="273.0" text="Simane &amp; Ryan :)      2021">
+            <font>
+                <Font name="MS Gothic" size="12.0" />
+            </font>
+        </Label>
+    </children>
+</Pane>
