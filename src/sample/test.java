@@ -2,12 +2,14 @@ package sample;
 
 import sample.RSA.RSACryptosystemMethods;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Random;
 
 public class test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
        /*Random r = new Random();
        int num = r.nextInt();
        if(num<0 ){
@@ -39,6 +41,10 @@ public class test {
 
         //System.out.println(rsa.pgcd(BigInteger.valueOf(3), BigInteger.valueOf(7)));
         System.out.println(b.modInverse(BigInteger.valueOf(13)));
-        //
+        File file = new File("src\\sample\\buffers\\buffer.txt");
+        System.out.println(file.getName());
+        System.out.println(file.getAbsolutePath());
+        System.out.println(file.getParent());
+        System.out.println(file.getCanonicalPath());
     }
 }

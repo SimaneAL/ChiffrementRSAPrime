@@ -8,32 +8,6 @@ public class RSACryptosystemMethods {
     Map<Character, Integer> mapLetters = new HashMap<Character, Integer>();
 
     public RSACryptosystemMethods() {
-        mapLetters.put('a', 1);
-        mapLetters.put('b', 2);
-        mapLetters.put('c', 3);
-        mapLetters.put('d', 4);
-        mapLetters.put('e', 5);
-        mapLetters.put('f', 6);
-        mapLetters.put('g', 7);
-        mapLetters.put('h', 8);
-        mapLetters.put('i', 9);
-        mapLetters.put('j', 10);
-        mapLetters.put('k', 11);
-        mapLetters.put('l', 12);
-        mapLetters.put('m', 13);
-        mapLetters.put('n', 14);
-        mapLetters.put('o', 15);
-        mapLetters.put('p', 16);
-        mapLetters.put('q', 17);
-        mapLetters.put('r', 18);
-        mapLetters.put('s', 19);
-        mapLetters.put('t', 20);
-        mapLetters.put('u', 21);
-        mapLetters.put('v', 22);
-        mapLetters.put('w', 23);
-        mapLetters.put('x', 24);
-        mapLetters.put('y', 25);
-        mapLetters.put('z', 26);
 
     }
 
@@ -109,7 +83,7 @@ public class RSACryptosystemMethods {
     public BigInteger randomPrimeNbr() {
         while (true) {
             BigInteger x = new BigInteger(100, new Random());
-
+            System.out.println(x);
             if (isPrime(x)) {
                 return x;
             }
@@ -117,10 +91,9 @@ public class RSACryptosystemMethods {
     }
 
     public BigInteger randomPrimeNbrInf(int bits) {
-
         while (true) {
             BigInteger x = new BigInteger(bits, new Random());
-
+            System.out.println(x);
             if (isPrime(x)) {
                 return x;
             }
@@ -130,7 +103,7 @@ public class RSACryptosystemMethods {
         while (true) {
 
             BigInteger x = new BigInteger(a.bitLength(), new Random());
-
+            System.out.println(x);
             if (isPrime(x) && areCoprime(x,a)) {
                 return x;
             }
@@ -150,7 +123,7 @@ public class RSACryptosystemMethods {
 
     //Encryption :
     public ArrayList<Character> transformToListString(String chaine) {
-        chaine = chaine.replaceAll(" ", "");
+       //chaine = chaine.replaceAll(" ", "");
         System.out.println(chaine);
         ArrayList<Character> list = new ArrayList<Character>();
         for (int i = 0; i < chaine.length(); i++) {
@@ -162,11 +135,9 @@ public class RSACryptosystemMethods {
     public ArrayList<Integer> transformToNbrs(ArrayList<Character> carlist) {
         ArrayList<Integer> integerlist = new ArrayList<Integer>();
         for (Character c : carlist) {
-            System.out.println(c);
-            System.out.println(this.mapLetters.get(c));
-            int classement = this.mapLetters.get(c);
-
-            integerlist.add(classement);
+            int ascii = (int) c;
+            integerlist.add(ascii);
+            System.out.println(ascii);
         }
         return integerlist;
     }
@@ -192,6 +163,7 @@ public class RSACryptosystemMethods {
        String listS = "";
         for(BigInteger num : list) {
             listS += num.toString() +" ";
+            //listS += num.toString() ;
         }
         return listS;
     }
@@ -236,12 +208,24 @@ public class RSACryptosystemMethods {
         }
         return decryptedrlist;
     }
-    public ArrayList<Character> transformToLetters(ArrayList<BigInteger> numbers) {
+    public ArrayList<Character> transformToLetters1(ArrayList<BigInteger> numbers) {
         ArrayList<Character> list = new ArrayList<Character>();
         Object[] set =  mapLetters.keySet().toArray();
         for (BigInteger a : numbers) {
             System.out.println(a);
             Character car = (Character) set[a.intValue()-1];
+            list.add(car);
+            System.out.println("le car est : " +car);
+        }
+        return list;
+    }
+
+    public ArrayList<Character> transformToLetters(ArrayList<BigInteger> numbers) {
+        ArrayList<Character> list = new ArrayList<Character>();
+        char car;
+        for (BigInteger a : numbers) {
+            System.out.println(a);
+            car = (char) a.intValue();
             list.add(car);
             System.out.println("le car est : " +car);
         }
@@ -283,15 +267,24 @@ public class RSACryptosystemMethods {
 
     public void encrypteBuffer(String fileName, ArrayList<BigInteger> list) throws FileNotFoundException {
 
-            PrintWriter writer = new PrintWriter(fileName);
+        File file = new File(fileName);
+        String name = file.getParent() +"\\EncryptedBuffers\\encrypted" +file.getName();
+        System.out.println(name);
+        File file1 = new File(name);
+        PrintWriter writer = new PrintWriter(file1.getName());
 
+        String listS = "";
+        for(BigInteger num : list) {
+            listS += num.toString() +" ";
+            //listS += num.toString() ;
+        }
             if(writer.checkError()){
-                throw new FileNotFoundException(fileName);
+                throw new FileNotFoundException(file1.getName());
             }
             else{
-                for (BigInteger bigInteger : list) {
-                    writer.println(bigInteger);
-                }
+
+                    writer.println(listS);
+
             }
 
 
@@ -299,6 +292,26 @@ public class RSACryptosystemMethods {
 
     }
 
+    public void decrypteBuffer(String fileName, String decryptedMsg) throws FileNotFoundException {
+
+        File file = new File(fileName);
+        String name = file.getParent() +"\\DecryptedBuffers\\decrypted" +file.getName();
+        System.out.println(name);
+        File file1 = new File(name);
+        PrintWriter writer = new PrintWriter(file1.getName());
+
+
+        if(writer.checkError()){
+            throw new FileNotFoundException(file1.getName());
+        }
+        else{
+            writer.println(decryptedMsg);
+        }
+
+
+        writer.close();
+
+    }
 
 }
 
