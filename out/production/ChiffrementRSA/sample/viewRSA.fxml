@@ -310,7 +310,7 @@
                 <Font name="MS Gothic" size="12.0" />
             </font></Button>
         <Label fx:id="notifs" layoutX="922.0" layoutY="408.0" prefHeight="276.0" prefWidth="290.0" />
-        <Label layoutX="36.0" layoutY="647.0" prefHeight="46.0" prefWidth="273.0" text="Simane &amp; Ryan :)      2021">
+        <Label layoutX="36.0" layoutY="647.0" prefHeight="46.0" prefWidth="273.0" text="Simane &amp; Ryan :)      ">
             <font>
                 <Font name="MS Gothic" size="12.0" />
             </font>

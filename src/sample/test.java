@@ -42,9 +42,7 @@ public class test {
         //System.out.println(rsa.pgcd(BigInteger.valueOf(3), BigInteger.valueOf(7)));
         System.out.println(b.modInverse(BigInteger.valueOf(13)));
         File file = new File("src\\sample\\buffers\\buffer.txt");
+
         System.out.println(file.getName());
-        System.out.println(file.getAbsolutePath());
-        System.out.println(file.getParent());
-        System.out.println(file.getCanonicalPath());
     }
 }

@@ -12,7 +12,6 @@ public class RSACryptosystemMethods {
     }
 
     public boolean isPrime(BigInteger number) {
-
         BigInteger nb = BigInteger.valueOf( number.intValue() - 1);
         BigInteger div = BigInteger.valueOf(1);
         if (number.intValue() == 1)
@@ -25,11 +24,7 @@ public class RSACryptosystemMethods {
                 nb =  BigInteger.valueOf( nb.intValue()-1);
             }
         }
-
-        if (div.intValue() > 2) {
-            return false;
-        }
-        return true;
+        return div.intValue() <= 2;
 
     }
 
@@ -268,9 +263,7 @@ public class RSACryptosystemMethods {
     public void encrypteBuffer(String fileName, ArrayList<BigInteger> list) throws FileNotFoundException {
 
         File file = new File(fileName);
-        String name = file.getParent() +"\\EncryptedBuffers\\encrypted" +file.getName();
-        System.out.println(name);
-        File file1 = new File(name);
+        File file1 = new File("src\\sample\\buffers\\EncryptedBuffers\\ENCRYPTED" +file.getName());
         PrintWriter writer = new PrintWriter(file1.getName());
 
         String listS = "";
@@ -295,9 +288,7 @@ public class RSACryptosystemMethods {
     public void decrypteBuffer(String fileName, String decryptedMsg) throws FileNotFoundException {
 
         File file = new File(fileName);
-        String name = file.getParent() +"\\DecryptedBuffers\\decrypted" +file.getName();
-        System.out.println(name);
-        File file1 = new File(name);
+        File file1 = new File("src\\sample\\buffers\\DecryptedBuffers\\DCRYPTED" +file.getName());
         PrintWriter writer = new PrintWriter(file1.getName());
 
 
