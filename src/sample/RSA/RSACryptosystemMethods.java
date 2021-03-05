@@ -1,5 +1,6 @@
 package sample.RSA;
 
+import java.beans.BeanInfo;
 import java.io.*;
 import java.math.BigInteger;
 import java.util.*;
@@ -11,7 +12,7 @@ public class RSACryptosystemMethods {
 
     }
 
-    public boolean isPrime(BigInteger number) {
+    public boolean isPrime11(BigInteger number) {
         BigInteger nb = BigInteger.valueOf( number.intValue() - 1);
         BigInteger div = BigInteger.valueOf(1);
         if (number.intValue() == 1)
@@ -22,10 +23,87 @@ public class RSACryptosystemMethods {
                     div =  BigInteger.valueOf( div.intValue()+1);
                 }
                 nb =  BigInteger.valueOf( nb.intValue()-1);
+
             }
         }
         return div.intValue() <= 2;
 
+    }
+
+    public boolean isPrime(BigInteger number) {
+        BigInteger nb = number.add(new BigInteger("-1"));
+        BigInteger div = new BigInteger("1");
+        BigInteger zero = new BigInteger("0");
+        BigInteger deux = new BigInteger("2");
+        if (number.intValue() == 1) {
+            System.out.println("**************************");
+            System.out.println("hum1 : " +div);
+            System.out.println(number);
+            return false;
+        }
+        else if(number.intValue() == 2) {
+            System.out.println("**************************");
+            System.out.println("hum2 : " +div);
+            System.out.println(number);
+            return true;
+
+        }else if(number.mod(deux).equals(zero)) {
+            System.out.println("**************************");
+            System.out.println("hum3 : " +div);
+            System.out.println(number);
+                return false;
+
+        } else{
+            //int taille=Math.abs(number.intValue());
+
+            while( nb.compareTo(zero) > 0 && div.intValue() <= 2){
+                if (number.mod(nb).intValue() == 0) {
+                    div =  div.add(new BigInteger("1"));
+                }
+
+                nb = nb.add(new BigInteger("-1"));
+                //System.out.println(nb);
+            }
+           /* for (int i = 1; i < taille; i++) {
+                if (number.mod(nb).intValue() == 0) {
+                    div =  div.add(new BigInteger("1"));
+                }
+                nb = nb.add(new BigInteger("-1"));
+            }*/
+        }
+        return div.intValue() <= 2;
+
+    }
+
+    public boolean isPrime1(int number) {
+        int nb = number -1;
+        int div = 1;
+        if (number== 1)
+            return false;
+        else {
+            for (int i = 1; i < number; i++) {
+                if (number % nb== 0) {
+                    div++;
+                }
+                nb --;
+            }
+        }
+        return div<= 2;
+    }
+
+    public boolean isPrime2(int number) {
+        int sqrt = (int) Math.sqrt(number) + 1;
+        if (number == 2 || number == 3) {
+            return true;
+        } if (number % 2 == 0) {
+            return false;
+        }
+        for (int i = 3; i < sqrt; i += 2) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public BigInteger encryptModule(BigInteger p, BigInteger q) {
@@ -34,8 +112,8 @@ public class RSACryptosystemMethods {
     }
 
     public BigInteger eulerIndic(BigInteger p, BigInteger q) {
-        BigInteger pPrime = BigInteger.valueOf(p.intValue()-1);
-        BigInteger qPrime = BigInteger.valueOf(q.intValue()-1);
+        BigInteger pPrime = p.add(new BigInteger("-1"));
+        BigInteger qPrime =  q.add(new BigInteger("-1"));
         return pPrime.multiply(qPrime);
     }
 
@@ -74,32 +152,63 @@ public class RSACryptosystemMethods {
             i++;
         }
     }
+    public BigInteger soustraction(BigInteger num,int b){
+        String a = num.toString();
+        int unite = Integer.parseInt(String.valueOf(a.charAt(a.length()-1)));
+        if(unite==0) {
+            String un = String.valueOf(a.charAt(a.length() - 2));
+            System.out.println("l-2 : " + un);
+            un += String.valueOf(a.charAt(a.length() - 1));
+            System.out.println("l-1 : " + un);
+            unite = Integer.parseInt(un);
+            System.out.println("unite : " + unite);
+            int result = unite - b;
+            a = a.substring(0, a.length() - 2);
+            a += result;
 
-    public BigInteger randomPrimeNbr() {
-        while (true) {
-            BigInteger x = new BigInteger(100, new Random());
-            System.out.println(x);
-            if (isPrime(x)) {
-                return x;
-            }
+        } else{
+            int result = unite - b;
+            a = a.substring(0, a.length()-1);
+            a+=result;
         }
+
+        System.out.println(a);
+        return new BigInteger(a);
     }
 
-    public BigInteger randomPrimeNbrInf(int bits) {
+    public BigInteger addition(BigInteger num,int b){
+        String a = num.toString();
+        int unite = Integer.parseInt(String.valueOf(a.charAt(a.length()-1)));;
+        int result = unite + b;
+        a = a.substring(0, a.length()-1);
+        a+=result;
+        return new BigInteger(a);
+    }
+
+    public BigInteger randomPrimeNbrBig(int l) {
+        return BigInteger.probablePrime(l, new Random());
+
+    }
+
+   /* public BigInteger randomPrimeNbrInf(int bits) {
         while (true) {
             BigInteger x = new BigInteger(bits, new Random());
             System.out.println(x);
-            if (isPrime(x)) {
+            if(x.intValue()<0){
+                x = BigInteger.valueOf(-x.intValue());
+            }
+            if (isPrime(x) ) {
                 return x;
             }
         }
-    }
+    }*/
     public BigInteger randomPrimewith(BigInteger a) {
         while (true) {
 
-            BigInteger x = new BigInteger(a.bitLength(), new Random());
+            BigInteger x = BigInteger.probablePrime(5, new Random());
             System.out.println(x);
-            if (isPrime(x) && areCoprime(x,a)) {
+            if( areCoprime(x,a)) {
+                System.out.println("ok");
                 return x;
             }
             // System.out.println(num);

@@ -137,8 +137,8 @@ public class Controller implements Initializable {
     void validateRandom(ActionEvent event) {
         //random p and q
         this.notifs.setText("Well wait... We are looking for random p and q !");
-        BigInteger randomP = this.rsa.randomPrimeNbrInf(10);
-        BigInteger randomQ = this.rsa.randomPrimeNbrInf(10);
+        BigInteger randomP = this.rsa.randomPrimeNbrBig(50);
+        BigInteger randomQ = this.rsa.randomPrimeNbrBig(50);
 
         this.randomP.setText((String.valueOf(randomP)));
         this.randomQ.setText((String.valueOf(randomQ)));
