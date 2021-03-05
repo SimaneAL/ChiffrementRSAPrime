@@ -27,7 +27,6 @@ public class RSACryptosystemMethods {
                 return false;
 
         } else{
-            //int taille=Math.abs(number.intValue());
 
             while( nb.compareTo(zero) > 0 && div.intValue() <= 2){
                 if (number.mod(nb).intValue() == 0) {
