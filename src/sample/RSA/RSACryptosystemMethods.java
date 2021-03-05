@@ -12,45 +12,18 @@ public class RSACryptosystemMethods {
 
     }
 
-    public boolean isPrime11(BigInteger number) {
-        BigInteger nb = BigInteger.valueOf( number.intValue() - 1);
-        BigInteger div = BigInteger.valueOf(1);
-        if (number.intValue() == 1)
-            return false;
-        else {
-            for (int i = 1; i < number.intValue(); i++) {
-                if (number.intValue() % nb.intValue() == 0) {
-                    div =  BigInteger.valueOf( div.intValue()+1);
-                }
-                nb =  BigInteger.valueOf( nb.intValue()-1);
-
-            }
-        }
-        return div.intValue() <= 2;
-
-    }
-
     public boolean isPrime(BigInteger number) {
         BigInteger nb = number.add(new BigInteger("-1"));
         BigInteger div = new BigInteger("1");
         BigInteger zero = new BigInteger("0");
         BigInteger deux = new BigInteger("2");
         if (number.intValue() == 1) {
-            System.out.println("**************************");
-            System.out.println("hum1 : " +div);
-            System.out.println(number);
             return false;
         }
         else if(number.intValue() == 2) {
-            System.out.println("**************************");
-            System.out.println("hum2 : " +div);
-            System.out.println(number);
             return true;
 
         }else if(number.mod(deux).equals(zero)) {
-            System.out.println("**************************");
-            System.out.println("hum3 : " +div);
-            System.out.println(number);
                 return false;
 
         } else{
@@ -62,14 +35,8 @@ public class RSACryptosystemMethods {
                 }
 
                 nb = nb.add(new BigInteger("-1"));
-                //System.out.println(nb);
             }
-           /* for (int i = 1; i < taille; i++) {
-                if (number.mod(nb).intValue() == 0) {
-                    div =  div.add(new BigInteger("1"));
-                }
-                nb = nb.add(new BigInteger("-1"));
-            }*/
+          
         }
         return div.intValue() <= 2;
 
@@ -91,20 +58,7 @@ public class RSACryptosystemMethods {
         return div<= 2;
     }
 
-    public boolean isPrime2(int number) {
-        int sqrt = (int) Math.sqrt(number) + 1;
-        if (number == 2 || number == 3) {
-            return true;
-        } if (number % 2 == 0) {
-            return false;
-        }
-        for (int i = 3; i < sqrt; i += 2) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
+   
 
     public BigInteger encryptModule(BigInteger p, BigInteger q) {
 
