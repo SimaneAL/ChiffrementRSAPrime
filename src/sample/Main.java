@@ -10,8 +10,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("viewRSA.fxml"));
-        primaryStage.setTitle("RSA");
+        Parent root = FXMLLoader.load(getClass().getResource("view/viewRSA.fxml"));
+        primaryStage.setTitle("RSA ");
         primaryStage.setScene(new Scene(root, 1250, 707));
         primaryStage.show();
     }

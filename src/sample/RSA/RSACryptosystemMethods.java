@@ -118,6 +118,14 @@ public class RSACryptosystemMethods {
     }
 
     public boolean areCoprime(BigInteger a, BigInteger b) {
+        if(this.isPrime(a)  && !a.mod(b).equals(BigInteger.ZERO)){
+            return true;
+        }else if(this.isPrime(b)  && !b.mod(a).equals(BigInteger.ZERO)){
+            return true;
+        }
+        return false;
+    }
+    public boolean areCoprime1(BigInteger a, BigInteger b) {
         return pgcd(a, b).intValue() == 1;
     }
 

@@ -1,18 +1,19 @@
-package sample;
+package sample.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.*;
 import javafx.stage.FileChooser;
 import sample.RSA.RSACryptosystemMethods;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.math.BigInteger;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ public class Controller implements Initializable {
 
     private RSACryptosystemMethods rsa;
     private File file;
+   // private Server server;
+   // private ClientHttp client;
 
     @FXML
     private Label randomP;
@@ -137,12 +140,12 @@ public class Controller implements Initializable {
     void validateRandom(ActionEvent event) {
         //random p and q
         this.notifs.setText("Well wait... We are looking for random p and q !");
-        BigInteger randomP = this.rsa.randomPrimeNbrBig(50);
-        BigInteger randomQ = this.rsa.randomPrimeNbrBig(50);
+        BigInteger randomP = this.rsa.randomPrimeNbrBig(10);
+        BigInteger randomQ = this.rsa.randomPrimeNbrBig(10);
 
         this.randomP.setText((String.valueOf(randomP)));
         this.randomQ.setText((String.valueOf(randomQ)));
-        this.notifs.setText("Cool ! p = " +randomP.intValue() +"\n" + "and q = " +randomQ.intValue());
+        this.notifs.setText("Cool ! p = " +randomP.toString() +"\n" + "and q = " +randomQ.toString());
         this.p.setText("0");
         this.q.setText("0");
         BigInteger n = this.rsa.encryptModule(randomP, randomQ);
@@ -156,7 +159,8 @@ public class Controller implements Initializable {
         this.d.setText((String.valueOf(d)));
 
 
-        this.notifs.setText("Gr8 ! The machine choose random p and q for you, note your public and private keys ! Now you just have to enter a message to encrypte it ! Or just chose a file  ");
+        this.notifs.setText("Cool !\n p = " +randomP.toString() +"\n" + "and q = " +randomQ.toString() +"\n The machine choose random p and q for you,  note your public and private keys ! " +
+                "Now you just have to enter a message to encrypte it ! Or just chose a file  ");
 
     }
     @FXML
@@ -199,5 +203,11 @@ public class Controller implements Initializable {
 
 
     }
+    @FXML
+        public void handleDragOver(DragEvent event) {
+            if(event.getDragboard().hasFiles()){
+                event.acceptTransferModes(TransferMode.ANY);
+            }
+        }
 
 }
