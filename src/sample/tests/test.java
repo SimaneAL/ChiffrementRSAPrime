@@ -1,5 +1,6 @@
 package sample.tests;
 
+import javafx.scene.image.ImageView;
 import sample.RSA.RSACryptosystemMethods;
 
 import java.io.File;
@@ -66,7 +67,7 @@ public class test {
         //BigInteger a = rsa.randomPrimeNbrInf(30);
         //System.out.println("x value 2 : " +x.intValue());
         //System.out.println("le x est prime ? " +x.intValue() +" is prime : " +rsa.isPrime(x));
-
+/*
         BigInteger n = new BigInteger("2");
        System.out.println(rsa.isPrime(n));
         n = new BigInteger("7");
@@ -95,11 +96,11 @@ public class test {
         BigInteger decimal = new BigInteger(number);
 
         System.out.println(decimal.add(n));
-        /*String a = decimal.toString();
+        *//*String a = decimal.toString();
         System.out.println(a.charAt(a.length()-1));
 
 
-        System.out.println(a);*/
+        System.out.println(a);*//*
         //int result = a.charAt(a.length()-1);
        // int result= Integer.parseInt(String.valueOf(a.charAt(a.length()-1)));
         //System.out.println(result);
@@ -109,7 +110,14 @@ public class test {
         //a+=result;
         //System.out.println("result : " +a);
         //32 par 32 bits pour les BigInteger et gérer le débordement
-        //gérer les données à travers les fichiers
+        //gérer les données à travers les fichiers*/
+
+
+
+        ImageView img = new ImageView();
+        img = rsa.imageDe('b');
+
+        System.out.println(img.getStyle());
 
     }
 }

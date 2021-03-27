@@ -4,11 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.*;
+import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
 import sample.RSA.RSACryptosystemMethods;
 
@@ -28,7 +30,8 @@ public class Controller implements Initializable {
 
     @FXML
     private Label randomP;
-
+    @FXML
+    private TilePane tilesMen;
     @FXML
     private Label randomQ;
 
@@ -94,7 +97,40 @@ public class Controller implements Initializable {
         this.notifs.setText("Your encrypted message has been decrypted ! You can encrypte it to verify ");
 
     }
+    @FXML
+    void decrypteMen(ActionEvent event) {
+        this.notifs.setText("Well wait... The machine will decrypte your message !");
+        ArrayList<Character> decryptedMsg = rsa.decrypteMen(this.tilesMen);
+        System.out.println(decryptedMsg);
+        this.decryptedmessage.setText(rsa.showDecryptedMsg(decryptedMsg));
+        this.notifs.setText("Your encrypted message has been decrypted ! You can encrypte it to verify ");
 
+    }
+
+    @FXML
+    void encrypteMen(ActionEvent event) {
+        if(!this.tilesMen.getChildren().isEmpty()){
+                this.tilesMen.getChildren().remove(0,this.tilesMen.getChildren().size() );
+
+        }
+        this.notifs.setText("Well wait... The machine will encrypte your message !");
+        String msg = decryptedmessage.getText();
+        ArrayList<Character> listCr =  this.rsa.transformToListString(msg);
+
+        this.rsa.encrypteMen(listCr, this.tilesMen);
+
+
+        this.notifs.setText("Your message has been encrypted ;) Try to decrypte it ! ");
+
+    }
+
+    @FXML
+    void delete(ActionEvent event) {
+        if(!this.tilesMen.getChildren().isEmpty()){
+            this.tilesMen.getChildren().remove(0,this.tilesMen.getChildren().size() );
+
+        }
+    }
     @FXML
     void encrypte(ActionEvent event) {
         this.notifs.setText("Well wait... The machine will encrypte your message !");
@@ -209,5 +245,113 @@ public class Controller implements Initializable {
                 event.acceptTransferModes(TransferMode.ANY);
             }
         }
+
+
+
+    @FXML
+    void addManW(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'w');
+
+    }
+    @FXML
+    void addManV(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'v');
+    }
+    @FXML
+    void addManU(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'u');
+    }
+    @FXML
+    void addManT(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 't');
+    }
+    @FXML
+    void addManR(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'r');
+    }
+    @FXML
+    void addManS(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 's');
+    }
+    @FXML
+    void addManQ(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'q');
+    }
+    @FXML
+    void addManP(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'p');
+    }
+    @FXML
+    void addManO(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'o');
+    }
+    @FXML
+    void addManN(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'n');
+    }
+    @FXML
+    void addManM(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'm');
+    }
+    @FXML
+    void addManL(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'l');
+    }
+    @FXML
+    void addManK(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'k');
+    }
+    @FXML
+    void addManJ(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'j');
+    }
+    @FXML
+    void addManI(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'i');
+    }
+    @FXML
+    void addManH(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'h');
+    }
+    @FXML
+    void addManG(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'g');
+    }
+    @FXML
+    void addManF(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'f');
+    }
+    @FXML
+    void addManE(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'e');
+    }
+    @FXML
+    void addManD(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'd');
+    }
+    @FXML
+    void addManC(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'c');
+    }
+    @FXML
+    void addManB(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'b');
+    }
+    @FXML
+    void addManA(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'a');
+    }
+    @FXML
+    void addManX(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'x');
+    }
+    @FXML
+    void addManY(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'y');
+    }
+    @FXML
+    void addManZ(ActionEvent event) throws FileNotFoundException {
+        this.rsa.addMenTile(this.tilesMen, 'z');
+    }
 
 }

@@ -1,8 +1,14 @@
 package sample.RSA;
 
+import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.TilePane;
+
 import java.beans.BeanInfo;
 import java.io.*;
 import java.math.BigInteger;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class RSACryptosystemMethods {
@@ -196,8 +202,19 @@ public class RSACryptosystemMethods {
         }
         return list;
     }
+    public void encrypteMen(ArrayList<Character> list, TilePane tile) {
+        for (Character c:list ) {
+            tile.getChildren().add(this.imageDe(c));
+        }
+    }
+    private static ImageView getImg(String... paths) {
+        return new ImageView(Paths.get(System.getProperty("user.dir"), paths).toUri().toString());
+    }
 
-    public ArrayList<Integer> transformToNbrs(ArrayList<Character> carlist) {
+    public ImageView imageDe(Character c){
+               return getImg("/src/sample/pics/" +c +c +".png");
+    }
+        public ArrayList<Integer> transformToNbrs(ArrayList<Character> carlist) {
         ArrayList<Integer> integerlist = new ArrayList<Integer>();
         for (Character c : carlist) {
             int ascii = (int) c;
@@ -297,6 +314,16 @@ public class RSACryptosystemMethods {
         return list;
     }
 
+    public ArrayList<Character> decrypteMen(TilePane tile) {
+        ArrayList<Character> list = new ArrayList<Character>();
+        for (Node c : tile.getChildren() ) {
+
+            ImageView img = (ImageView) c;
+            System.out.println("style    " +img.getImage().impl_getUrl().charAt(66));
+            list.add(img.getImage().impl_getUrl().charAt(66));
+        }
+        return list;
+    }
     public String showDecryptedMsg(ArrayList<Character> list){
         StringBuilder listS = new StringBuilder();
         for(Character c : list) {
@@ -372,6 +399,11 @@ public class RSACryptosystemMethods {
 
         writer.close();
 
+    }
+
+
+    public void addMenTile(TilePane tile, Character c){
+        tile.getChildren().add(this.imageDe(c));
     }
 
 }
