@@ -2,15 +2,9 @@
 
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1450.0" style="-fx-background-color: #272727;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
     <children>
@@ -75,7 +69,7 @@
                 <Font name="MV Boli" size="19.0" />
             </font>
         </Text>
-        <Button layoutX="260.0" layoutY="567.0" mnemonicParsing="false" onAction="#encrypteBuffer" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: #ff652f;" text="Encrypte buffer" textFill="WHITE">
+        <Button layoutX="260.0" layoutY="567.0" mnemonicParsing="false" onAction="#encrypteBuffer" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: #ff652f;" text="Encrypte file" textFill="WHITE">
             <font>
                 <Font name="MV Boli" size="14.0" />
             </font></Button>
@@ -84,11 +78,11 @@
                 <Font name="MV Boli" size="19.0" />
             </font>
         </Text>
-        <Button layoutX="260.0" layoutY="617.0" mnemonicParsing="false" onAction="#decrypteBuffer" prefHeight="18.0" prefWidth="131.0" style="-fx-background-color: #ff652f;" text="Decrypte buffer" textFill="WHITE">
+        <Button layoutX="260.0" layoutY="617.0" mnemonicParsing="false" onAction="#decrypteBuffer" prefHeight="18.0" prefWidth="131.0" style="-fx-background-color: #ff652f;" text="Decrypte file" textFill="WHITE">
             <font>
                 <Font name="MV Boli" size="14.0" />
             </font></Button>
-        <Label fx:id="notifs" layoutX="959.0" layoutY="263.0" prefHeight="273.0" prefWidth="284.0" textFill="#fcfcfc">
+        <Label fx:id="notifs" layoutX="958.0" layoutY="263.0" prefHeight="252.0" prefWidth="345.0" textFill="#fcfcfc">
          <font>
             <Font name="MV Boli" size="12.0" />
          </font></Label>
@@ -97,9 +91,9 @@
                 <Font name="MV Boli" size="12.0" />
             </font>
         </Label>
-      <HBox layoutX="469.0" layoutY="60.0" prefHeight="159.0" prefWidth="748.0">
+      <HBox layoutX="469.0" layoutY="60.0" prefHeight="159.0" prefWidth="595.0">
          <children>
-            <VBox prefHeight="159.0" prefWidth="229.0">
+            <VBox prefHeight="159.0" prefWidth="309.0">
                <children>
                       <HBox prefHeight="63.0" prefWidth="136.0">
                           <children>
@@ -111,7 +105,7 @@
                                       <Font name="MV Boli" size="11.0" />
                                   </font>
                               </Text>
-                              <TextField fx:id="p" prefHeight="25.0" prefWidth="241.0">
+                              <TextField fx:id="p" prefHeight="25.0" prefWidth="254.0">
                                   <HBox.margin>
                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                   </HBox.margin>
@@ -169,7 +163,7 @@
                       </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="159.0" prefWidth="274.0">
+            <VBox prefHeight="159.0" prefWidth="239.0">
                <children>
                       <Text fill="#ff652f" strokeType="OUTSIDE" strokeWidth="0.0" text="Public key :" textAlignment="CENTER" wrappingWidth="113.55078125">
                           <font>
@@ -227,69 +221,9 @@
                       </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="159.0" prefWidth="243.0">
-               <children>
-                      <Text fill="#ff652f" strokeType="OUTSIDE" strokeWidth="0.0" text="Private key :" textAlignment="CENTER" wrappingWidth="113.55078125">
-                          <font>
-                              <Font name="MV Boli" size="12.0" />
-                          </font>
-                      </Text>
-                      <HBox prefHeight="54.0" prefWidth="136.0">
-                          <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="d =" wrappingWidth="30.55078125">
-                                  <HBox.margin>
-                                      <Insets bottom="10.0" left="10.0" right="10.0" top="18.0" />
-                                  </HBox.margin>
-                                  <font>
-                                      <Font name="MV Boli" size="12.0" />
-                                  </font>
-                              </Text>
-                              <Label fx:id="d" prefHeight="34.0" prefWidth="179.0" text="0" textFill="WHITE">
-                                  <opaqueInsets>
-                                      <Insets left="10.0" />
-                                  </opaqueInsets>
-                                  <HBox.margin>
-                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                  </HBox.margin>
-                                  <font>
-                                      <Font name="MS Gothic" size="12.0" />
-                                  </font>
-                              </Label>
-                          </children>
-                          <VBox.margin>
-                              <Insets top="10.0" />
-                          </VBox.margin>
-                      </HBox>
-                  <HBox prefHeight="0.0" prefWidth="243.0">
-                     <children>
-                            <Button mnemonicParsing="false" onAction="#validate" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #179261;" text="Calculate" textFill="WHITE">
-                                <font>
-                                    <Font name="MV Boli" size="14.0" />
-                                </font>
-                            </Button>
-                        <ToggleButton fx:id="hide" mnemonicParsing="false" onAction="#hide" prefHeight="35.0" prefWidth="61.0" style="-fx-background-color: #8B0000;" text="hide" textFill="#f5f5f5">
-                           <font>
-                              <Font name="MV Boli" size="14.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </HBox.margin>
-                        </ToggleButton>
-                        <ToggleButton fx:id="show" mnemonicParsing="false" onAction="#show" prefHeight="35.0" prefWidth="74.0" style="-fx-background-color: #fce200;" text="show" textFill="#f5f5f5">
-                           <font>
-                              <Font name="MV Boli" size="14.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </ToggleButton>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
          </children>
       </HBox>
-      <VBox layoutX="1210.0" layoutY="60.0" prefHeight="159.0" prefWidth="226.0">
+      <VBox layoutX="1063.0" layoutY="60.0" prefHeight="159.0" prefWidth="351.0">
          <children>
                 <Text fill="#ff652f" strokeType="OUTSIDE" strokeWidth="0.0" text="Random p and q :" textAlignment="CENTER" wrappingWidth="113.55078125">
                     <font>
@@ -352,22 +286,17 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="452.0" layoutY="484.0" text="Fonctionnement :" textFill="#fce200">
+      <Label layoutX="452.0" layoutY="521.0" prefHeight="32.0" prefWidth="256.0" text="Encypted message (symbols" textFill="#fce200">
          <font>
-            <Font name="MV Boli" size="26.0" />
+            <Font name="MV Boli" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="159.0" fitWidth="1000.0" layoutX="444.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../pics/Capture.PNG" />
-         </image>
-      </ImageView>
-      <Label layoutX="452.0" layoutY="207.0" prefHeight="56.0" prefWidth="493.0" style="-fx-border-radius: 5;" text="Les hommes dansants -Sherlock Holmes -Sir Arthur Conan Doyle" textAlignment="RIGHT" textFill="#fce200">
+      <Label layoutX="452.0" layoutY="343.0" prefHeight="56.0" prefWidth="493.0" style="-fx-border-radius: 5;" text="Les hommes dansants -Sherlock Holmes -Sir Arthur Conan Doyle" textAlignment="RIGHT" textFill="#fce200">
          <font>
             <Font name="MV Boli" size="15.0" />
          </font>
       </Label>
-      <GridPane layoutX="469.0" layoutY="276.0" prefHeight="115.0" prefWidth="95.0">
+      <GridPane layoutX="469.0" layoutY="399.0" prefHeight="115.0" prefWidth="95.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -434,7 +363,7 @@
             </Button>
          </children>
       </GridPane>
-      <GridPane layoutX="564.0" layoutY="276.0" prefHeight="115.0" prefWidth="95.0">
+      <GridPane layoutX="564.0" layoutY="399.0" prefHeight="115.0" prefWidth="95.0">
          <children>
             <Button mnemonicParsing="false" onAction="#addManC" prefHeight="41.0" prefWidth="57.0" style="-fx-background-color: #179261;">
                <graphic>
@@ -501,7 +430,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <GridPane layoutX="659.0" layoutY="276.0" prefHeight="115.0" prefWidth="95.0">
+      <GridPane layoutX="659.0" layoutY="399.0" prefHeight="115.0" prefWidth="95.0">
          <children>
             <Button mnemonicParsing="false" onAction="#addManE" prefHeight="41.0" prefWidth="49.0" style="-fx-background-color: #fce200;">
                <graphic>
@@ -568,7 +497,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <GridPane layoutX="754.0" layoutY="276.0" prefHeight="115.0" prefWidth="95.0">
+      <GridPane layoutX="754.0" layoutY="399.0" prefHeight="115.0" prefWidth="95.0">
          <children>
             <Button mnemonicParsing="false" onAction="#addManG" prefHeight="41.0" prefWidth="54.0" style="-fx-background-color: #ff652f;">
                <graphic>
@@ -635,7 +564,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <GridPane layoutX="849.0" layoutY="276.0" prefHeight="115.0" prefWidth="48.0">
+      <GridPane layoutX="849.0" layoutY="399.0" prefHeight="115.0" prefWidth="48.0">
          <children>
             <Button mnemonicParsing="false" onAction="#addManI" style="-fx-background-color: #179261;">
                <graphic>
@@ -676,7 +605,6 @@
             <Font name="MV Boli" size="14.0" />
          </font>
       </Button>
-      <TilePane fx:id="tilesMen" layoutX="14.0" layoutY="307.0" prefHeight="140.0" prefWidth="417.0" />
       <Button fx:id="decrypteMen" layoutX="229.0" layoutY="263.0" mnemonicParsing="false" onAction="#decrypteMen" prefHeight="35.0" prefWidth="114.0" style="-fx-background-color: #179261;" text="decrypte men" textFill="WHITE">
          <font>
             <Font name="MV Boli" size="14.0" />
@@ -695,6 +623,71 @@
          </graphic>
       </Button>
       <ProgressIndicator layoutX="1392.0" layoutY="652.0" progress="0.0" />
-      <ScrollBar layoutX="370.0" layoutY="686.0" prefHeight="14.0" prefWidth="493.0" />
+      <VBox layoutX="469.0" layoutY="201.0" prefHeight="159.0" prefWidth="482.0">
+         <children>
+            <Text fill="#ff652f" strokeType="OUTSIDE" strokeWidth="0.0" text="Private key :" textAlignment="CENTER" wrappingWidth="113.55078125">
+               <font>
+                  <Font name="MV Boli" size="12.0" />
+               </font>
+            </Text>
+            <HBox prefHeight="54.0" prefWidth="136.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="d =" wrappingWidth="30.55078125">
+                     <font>
+                        <Font name="MV Boli" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="18.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Label fx:id="d" prefHeight="34.0" prefWidth="407.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="MS Gothic" size="12.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="2.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="0.0" prefWidth="243.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#validate" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #179261;" text="Calculate" textFill="WHITE">
+                     <font>
+                        <Font name="MV Boli" size="14.0" />
+                     </font>
+                  </Button>
+                  <ToggleButton fx:id="hide" mnemonicParsing="false" onAction="#hide" prefHeight="35.0" prefWidth="61.0" style="-fx-background-color: #8B0000;" text="hide" textFill="#f5f5f5">
+                     <font>
+                        <Font name="MV Boli" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </ToggleButton>
+                  <ToggleButton fx:id="show" mnemonicParsing="false" onAction="#show" prefHeight="35.0" prefWidth="74.0" style="-fx-background-color: #fce200;" text="show" textFill="#f5f5f5">
+                     <font>
+                        <Font name="MV Boli" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ToggleButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TextArea fx:id="encryptedmessage1" layoutX="452.0" layoutY="561.0" prefHeight="140.0" prefWidth="417.0">
+         <font>
+            <Font name="MV Boli" size="12.0" />
+         </font>
+      </TextArea>
+      <TilePane fx:id="tilesMen" layoutX="452.0" layoutY="561.0" prefHeight="140.0" prefWidth="417.0" />
     </children>
 </Pane>

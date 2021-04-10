@@ -1,15 +1,12 @@
 package sample.controller;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.*;
 import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
 import sample.RSA.RSACryptosystemMethods;
@@ -25,8 +22,6 @@ public class Controller implements Initializable {
 
     private RSACryptosystemMethods rsa;
     private File file;
-   // private Server server;
-   // private ClientHttp client;
 
     @FXML
     private Label randomP;
@@ -34,45 +29,31 @@ public class Controller implements Initializable {
     private TilePane tilesMen;
     @FXML
     private Label randomQ;
-
-
     @FXML
     private TextField p;
-
     @FXML
     private TextField q;
-
-
     @FXML
     private Button decrypte;
-
     @FXML
     private Button encrypte;
-
     @FXML
     private Label d;
-
     @FXML
     private Label e;
-
     @FXML
     private Label f;
-
     @FXML
     private TextArea encryptedmessage;
-
     @FXML
     private TextArea decryptedmessage;
-
     @FXML
     private Label n;
-
     @FXML
     private Label notifs;
 
     public Controller() {
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -86,82 +67,17 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void decrypte(ActionEvent event) {
-        this.notifs.setText("Well wait... The machine will decrypte your message !");
-        String msg = encryptedmessage.getText();
-        ArrayList<BigInteger> encryptedMsg = rsa.transformToListNumbers(msg);
-        ArrayList<BigInteger> list = rsa.decryptNumbers(encryptedMsg,new  BigInteger(this.d.getText()), new  BigInteger(this.n.getText()));
-        ArrayList<Character> decryptedMsg = rsa.transformToLetters(list);
-        System.out.println(decryptedMsg);
-        this.decryptedmessage.setText(rsa.showDecryptedMsg(decryptedMsg));
-        this.notifs.setText("Your encrypted message has been decrypted ! You can encrypte it to verify ");
-
-    }
-    @FXML
-    void decrypteMen(ActionEvent event) {
-        this.notifs.setText("Well wait... The machine will decrypte your message !");
-        ArrayList<Character> decryptedMsg = rsa.decrypteMen(this.tilesMen);
-        System.out.println(decryptedMsg);
-        this.decryptedmessage.setText(rsa.showDecryptedMsg(decryptedMsg));
-        this.notifs.setText("Your encrypted message has been decrypted ! You can encrypte it to verify ");
-
-    }
-
-    @FXML
-    void encrypteMen(ActionEvent event) {
-
-
-        if(!this.tilesMen.getChildren().isEmpty()){
-                this.tilesMen.getChildren().remove(0,this.tilesMen.getChildren().size() );
-
-        }
-        this.encryptedmessage.setText("");
-        this.notifs.setText("Well wait... The machine will encrypte your message !");
-        String msg = decryptedmessage.getText();
-        ArrayList<Character> listCr =  this.rsa.transformToListString(msg);
-
-        this.rsa.encrypteMen(listCr, this.tilesMen);
-
-
-        this.notifs.setText("Your message has been encrypted ;) Try to decrypte it ! ");
-
-    }
-
-    @FXML
-    void delete(ActionEvent event) {
-        if(!this.tilesMen.getChildren().isEmpty()){
-            this.tilesMen.getChildren().remove(0,this.tilesMen.getChildren().size() );
-
-        }
-        this.encryptedmessage.setText("");
-    }
-    @FXML
-    void encrypte(ActionEvent event) {
-        this.notifs.setText("Well wait... The machine will encrypte your message !");
-        String msg = decryptedmessage.getText();
-        ArrayList<Character> listCr =  this.rsa.transformToListString(msg);
-        ArrayList<Integer> listEntiers = this.rsa.transformToNbrs(listCr);
-        ArrayList<BigInteger> listEncryptedInte = this.rsa.encryptNumbers(listEntiers,new  BigInteger(this.e.getText()), new BigInteger(this.n.getText()));
-
-        this.encryptedmessage.setText(rsa.showEncryptedMsg(listEncryptedInte));
-        this.notifs.setText("Your message has been encrypted ;) Try to decrypte it ! ");
-
-    }
-
-
-
-
-    @FXML
+    //bouton validate pour valider le choix de p et q
     void validate(ActionEvent event) {
         //user s choice
         BigInteger p = null;
         BigInteger q = null;
 
-        //gestion des erreurs
+        //gestion des erreurs : cas d insertion des non-entiers
         boolean contin = true;
         try {
-             p = new BigInteger(this.p.getText());
-             q = new BigInteger(this.q.getText());
+            p = new BigInteger(this.p.getText());
+            q = new BigInteger(this.q.getText());
         }
         catch(NumberFormatException e) {
             this.notifs.setText("Oups ! The number format isn't valid , try again please");
@@ -194,17 +110,9 @@ public class Controller implements Initializable {
 
         }
     }
-    @FXML
-    void hide(ActionEvent event) {
-        this.d.setText("*****");
-    }
 
     @FXML
-    void show(ActionEvent event) {
-        this.d.setText(this.rsa.getD().toString());
-    }
-
-    @FXML
+    //bouton validateRandom : choix de q et q par la machine ( random)
     void validateRandom(ActionEvent event) {
         //random p and q
         this.notifs.setText("Well wait... We are looking for random p and q !");
@@ -236,6 +144,92 @@ public class Controller implements Initializable {
                 "Now you just have to enter a message to encrypte it ! Or just chose a file  ");
 
     }
+
+    //bouton pour cacher la clef privee
+    @FXML
+    void hide(ActionEvent event) {
+        this.d.setText("*****");
+    }
+
+    //bouton pour afficher la clef privee
+    @FXML
+    void show(ActionEvent event) {
+        this.d.setText(this.rsa.getD().toString());
+    }
+
+    //bouton pour effacer les caracteres saisis dans le champs de texte
+    @FXML
+    void delete(ActionEvent event) {
+        if(!this.tilesMen.getChildren().isEmpty()){
+            this.tilesMen.getChildren().remove(0,this.tilesMen.getChildren().size() );
+
+        }
+        this.encryptedmessage.setText("");
+    }
+    //bouton pour chiffrer le texte saisi dnas le champs
+    // RSA
+    @FXML
+    void encrypte(ActionEvent event) {
+        this.notifs.setText("Well wait... The machine will encrypte your message !");
+        String msg = decryptedmessage.getText();
+        ArrayList<Character> listCr =  this.rsa.transformToListString(msg);
+        ArrayList<Integer> listEntiers = this.rsa.transformToNbrs(listCr);
+        ArrayList<BigInteger> listEncryptedInte = this.rsa.encryptNumbers(listEntiers);
+
+        this.encryptedmessage.setText(rsa.showEncryptedMsg(listEncryptedInte));
+        this.notifs.setText("Your message has been encrypted ;) Try to decrypte it ! ");
+
+    }
+
+    //bouton pour chiffrer le texte saisi dnas le champs
+    // les homme dansants
+    @FXML
+    void encrypteMen(ActionEvent event) {
+
+
+        if(!this.tilesMen.getChildren().isEmpty()){
+            this.tilesMen.getChildren().remove(0,this.tilesMen.getChildren().size() );
+
+        }
+        this.encryptedmessage.setText("");
+        this.notifs.setText("Well wait... The machine will encrypte your message !");
+        String msg = decryptedmessage.getText();
+        ArrayList<Character> listCr =  this.rsa.transformToListString(msg);
+
+        this.rsa.encrypteMen(listCr, this.tilesMen);
+
+
+        this.notifs.setText("Your message has been encrypted ;) Try to decrypte it ! ");
+
+    }
+
+    //bouton pour dechiffrer le code
+    //RSA
+    @FXML
+    void decrypte(ActionEvent event) {
+        this.notifs.setText("Well wait... The machine will decrypte your message !");
+        String msg = encryptedmessage.getText();
+        ArrayList<BigInteger> encryptedMsg = rsa.transformToListNumbers(msg);
+        ArrayList<BigInteger> list = rsa.decryptNumbers(encryptedMsg);
+        ArrayList<Character> decryptedMsg = rsa.transformToLetters(list);
+        System.out.println(decryptedMsg);
+        this.decryptedmessage.setText(rsa.showDecryptedMsg(decryptedMsg));
+        this.notifs.setText("Your encrypted message has been decrypted ! You can encrypte it to verify ");
+
+    }
+    //bouton pour dechiffrer le code
+    //les hommes dansants
+    @FXML
+    void decrypteMen(ActionEvent event) {
+        this.notifs.setText("Well wait... The machine will decrypte your message !");
+        ArrayList<Character> decryptedMsg = rsa.decrypteMen(this.tilesMen);
+        System.out.println(decryptedMsg);
+        this.decryptedmessage.setText(rsa.showDecryptedMsg(decryptedMsg));
+        this.notifs.setText("Your encrypted message has been decrypted ! You can encrypte it to verify ");
+
+    }
+
+    //bouton : choisir un fichier
     @FXML
     void choseFile(ActionEvent event){
         FileChooser file = new FileChooser();
@@ -246,45 +240,34 @@ public class Controller implements Initializable {
 
     }
 
-
+    //bouton chiffrer un fichier choisi
+    //RSA
     @FXML
     void encrypteBuffer(ActionEvent event) throws FileNotFoundException {
         this.notifs.setText("Well wait...");
         String msg = rsa.readBuffer(this.file.getPath());
         ArrayList<Character> listCr =  this.rsa.transformToListString(msg);
         ArrayList<Integer> listEntiers = this.rsa.transformToNbrs(listCr);
-        ArrayList<BigInteger> listEncryptedInte = this.rsa.encryptNumbers(listEntiers,new  BigInteger(this.e.getText()), new BigInteger(this.n.getText()));
-
-
-        //this.encryptedmessage.setText(rsa.showEncryptedMsg(listEncryptedInte));
+        ArrayList<BigInteger> listEncryptedInte = this.rsa.encryptNumbers(listEntiers);
         rsa.encrypteBuffer(this.file.getPath(), listEncryptedInte);
         this.notifs.setText("You just encrypte your file, go check " +"\\encryptedBuffer.txt here : " +file.getParent());
-
-
     }
+
+    //bouton : dechiffrer le fichier choisi
+    //RSA
     @FXML
     void decrypteBuffer(ActionEvent event) throws FileNotFoundException {
         this.notifs.setText("Well wait...");
         String msg = rsa.readBuffer(this.file.getPath());
         ArrayList<BigInteger> encryptedMsg = rsa.transformToListNumbers(msg);
-        ArrayList<BigInteger> list = rsa.decryptNumbers(encryptedMsg,new  BigInteger(this.d.getText()), new  BigInteger(this.n.getText()));
+        ArrayList<BigInteger> list = rsa.decryptNumbers(encryptedMsg);
         ArrayList<Character> decryptedMsg = rsa.transformToLetters(list);
         System.out.println(decryptedMsg);
-        //this.decryptedmessage.setText(rsa.showDecryptedMsg(decryptedMsg));
         this.rsa.decrypteBuffer(this.file.getPath(), this.rsa.showDecryptedMsg(decryptedMsg));
         this.notifs.setText("Cool ! You just decrypte your file, go check   " +file.getName() +"\\decryptedBuffertxt");
-
-
     }
-    @FXML
-        public void handleDragOver(DragEvent event) {
-            if(event.getDragboard().hasFiles()){
-                event.acceptTransferModes(TransferMode.ANY);
-            }
-        }
 
-
-
+//choisir un symbole   (de a à z)
     @FXML
     void addManW(ActionEvent event) throws FileNotFoundException {
         this.rsa.addMenTile(this.tilesMen, 'w');
