@@ -112,12 +112,12 @@ public class test {
         //32 par 32 bits pour les BigInteger et gérer le débordement
         //gérer les données à travers les fichiers*/
 
+        String mot = "file:/C:/Users/enams/IdeaProjects/ChiffrementRSA/src/sample/pics/ww.png";
+        String r = rsa.extract(mot);
+        System.out.println(r);
+        System.out.println(r.charAt(5));
 
 
-        ImageView img = new ImageView();
-        img = rsa.imageDe('b');
-
-        System.out.println(img.getStyle());
 
     }
 }

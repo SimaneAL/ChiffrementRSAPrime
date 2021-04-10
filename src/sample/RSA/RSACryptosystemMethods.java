@@ -10,12 +10,56 @@ import java.io.*;
 import java.math.BigInteger;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RSACryptosystemMethods {
     Map<Character, Integer> mapLetters = new HashMap<Character, Integer>();
+    BigInteger p,q,e,n,d;
 
     public RSACryptosystemMethods() {
+        this.p = BigInteger.ZERO;
+        this.q = BigInteger.ZERO;
+        this.e = BigInteger.ZERO;
+        this.n = BigInteger.ZERO;
+        this.d = BigInteger.ZERO;
 
+    }
+
+    public void setD(BigInteger d) {
+        this.d = d;
+    }
+
+    public BigInteger getP() {
+        return p;
+    }
+
+    public void setP(BigInteger p) {
+        this.p = p;
+    }
+
+    public BigInteger getQ() {
+        return q;
+    }
+
+    public void setQ(BigInteger q) {
+        this.q = q;
+    }
+
+    public BigInteger getE() {
+        return e;
+    }
+
+    public void setE(BigInteger e) {
+        this.e = e;
+    }
+
+    public BigInteger getN() {
+        return n;
+    }
+
+    public void setN(BigInteger n) {
+        this.n = n;
     }
 
     public boolean isPrime(BigInteger number) {
@@ -90,25 +134,6 @@ public class RSACryptosystemMethods {
 
     //private key
     public BigInteger inverseOf(BigInteger e, BigInteger mod) {
-        //x*y = 1 [mod]
-        //<=> x*y = mod*k +1
-        //<=> y = (mod*k + 1 ) *1/x
-       /* int y = 1;
-        return (mod +1) / x;*/
-       /* BigInteger d = BigInteger.valueOf(0);
-        BigInteger i = BigInteger.valueOf(0);
-        while (true) {
-            BigInteger x = BigInteger.valueOf(1 + (i.multiply(mod).intValue()) );
-            if (x.mod(e).intValue()  == 0) {
-                d = x.divide(e);
-                break;
-            }
-            i = BigInteger.valueOf(i.intValue()+1);
-        }
-        return d;*/
-
-        //return e.modInverse(mod);
-
         int i = 2;
         while(true){
             BigInteger indice = BigInteger.valueOf(i);
@@ -320,9 +345,27 @@ public class RSACryptosystemMethods {
 
             ImageView img = (ImageView) c;
             System.out.println("style    " +img.getImage().impl_getUrl().charAt(66));
-            list.add(img.getImage().impl_getUrl().charAt(66));
+            System.out.println(img.getImage().impl_getUrl());
+            //regex
+            String url = img.getImage().impl_getUrl();
+
+            //extract retourne "/pics/c.png" on prend donc le 5e char
+            list.add(this.extract(url).charAt(5));
         }
         return list;
+    }
+
+    //regex
+    public  String extract(String myStr) {
+        Pattern p = Pattern.compile("pics/.*$");
+        Matcher m = p.matcher(myStr);
+
+        while (m.find()) {
+            String theGroup = m.group(0);
+            System.out.format("'%s'\n", theGroup);
+            return m.group(0);
+        }
+        return null;
     }
     public String showDecryptedMsg(ArrayList<Character> list){
         StringBuilder listS = new StringBuilder();
@@ -401,10 +444,15 @@ public class RSACryptosystemMethods {
 
     }
 
+    public BigInteger getD() {
+        return d;
+    }
 
     public void addMenTile(TilePane tile, Character c){
         tile.getChildren().add(this.imageDe(c));
     }
+
+
 
 }
 

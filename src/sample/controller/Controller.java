@@ -109,10 +109,13 @@ public class Controller implements Initializable {
 
     @FXML
     void encrypteMen(ActionEvent event) {
+
+
         if(!this.tilesMen.getChildren().isEmpty()){
                 this.tilesMen.getChildren().remove(0,this.tilesMen.getChildren().size() );
 
         }
+        this.encryptedmessage.setText("");
         this.notifs.setText("Well wait... The machine will encrypte your message !");
         String msg = decryptedmessage.getText();
         ArrayList<Character> listCr =  this.rsa.transformToListString(msg);
@@ -130,6 +133,7 @@ public class Controller implements Initializable {
             this.tilesMen.getChildren().remove(0,this.tilesMen.getChildren().size() );
 
         }
+        this.encryptedmessage.setText("");
     }
     @FXML
     void encrypte(ActionEvent event) {
@@ -150,27 +154,55 @@ public class Controller implements Initializable {
     @FXML
     void validate(ActionEvent event) {
         //user s choice
-        BigInteger p = new BigInteger(this.p.getText());
-        BigInteger q = new BigInteger(this.q.getText());
-        this.randomP.setText((String.valueOf(0)));
-        this.randomQ.setText((String.valueOf(0)));
+        BigInteger p = null;
+        BigInteger q = null;
 
-        BigInteger n = this.rsa.encryptModule(p, q);
-        BigInteger f = this.rsa.eulerIndic(p,q);
+        //gestion des erreurs
+        boolean contin = true;
+        try {
+             p = new BigInteger(this.p.getText());
+             q = new BigInteger(this.q.getText());
+        }
+        catch(NumberFormatException e) {
+            this.notifs.setText("Oups ! The number format isn't valid , try again please");
+            //afin de ne pas continuer le lancement de la méthode
+            contin = false;
+        }
 
-        this.n.setText((String.valueOf(n)));
-        this.f.setText((String.valueOf(f)));
+        if(contin){
+            this.randomP.setText((String.valueOf(0)));
+            this.randomQ.setText((String.valueOf(0)));
+            this.rsa.setP(p);
+            this.rsa.setQ(q);
 
-        BigInteger e = this.rsa.randomPrimewith(f);
-        BigInteger d = this.rsa.inverseOf(e, f);
-        System.out.println("d = " +d);
-        this.e.setText((String.valueOf(e)));
-        this.d.setText((String.valueOf(d)));
+            BigInteger n = this.rsa.encryptModule(p, q);
+            this.rsa.setN(n);
+            BigInteger f = this.rsa.eulerIndic(p,q);
 
-        this.notifs.setText("Gr8 ! You choose p and q for you, now you just have to enter a message to encrypte it !  ");
+            this.n.setText((String.valueOf(n)));
+            this.f.setText((String.valueOf(f)));
 
+            BigInteger e = this.rsa.randomPrimewith(f);
+            this.rsa.setE(e);
+            BigInteger d = this.rsa.inverseOf(e, f);
+            this.rsa.setD(d);
+            System.out.println("d = " +d);
+            this.e.setText((String.valueOf(e)));
+            this.d.setText((String.valueOf(d)));
+
+            this.notifs.setText("Gr8 ! You choose p and q for you, now you just have to enter a message to encrypte it !  ");
+
+        }
+    }
+    @FXML
+    void hide(ActionEvent event) {
+        this.d.setText("*****");
     }
 
+    @FXML
+    void show(ActionEvent event) {
+        this.d.setText(this.rsa.getD().toString());
+    }
 
     @FXML
     void validateRandom(ActionEvent event) {
@@ -178,6 +210,8 @@ public class Controller implements Initializable {
         this.notifs.setText("Well wait... We are looking for random p and q !");
         BigInteger randomP = this.rsa.randomPrimeNbrBig(10);
         BigInteger randomQ = this.rsa.randomPrimeNbrBig(10);
+        this.rsa.setP(randomP);
+        this.rsa.setQ(randomQ);
 
         this.randomP.setText((String.valueOf(randomP)));
         this.randomQ.setText((String.valueOf(randomQ)));
@@ -185,12 +219,15 @@ public class Controller implements Initializable {
         this.p.setText("0");
         this.q.setText("0");
         BigInteger n = this.rsa.encryptModule(randomP, randomQ);
+        this.rsa.setN(n);
         BigInteger f = this.rsa.eulerIndic(randomP,randomQ);
         this.n.setText((String.valueOf(n)));
         this.f.setText((String.valueOf(f)));
 
         BigInteger e = this.rsa.randomPrimewith(f);
+        this.rsa.setE(e);
         BigInteger d = this.rsa.inverseOf(e, f);
+        this.rsa.setD(d);
         this.e.setText((String.valueOf(e)));
         this.d.setText((String.valueOf(d)));
 
