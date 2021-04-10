@@ -1,5 +1,5 @@
 public class RLE {
-    //compression
+    //compression : by Ryan
     public void rle(String text) {
         int n = text.length();
         for(int i = 0; i < n; i++) {
