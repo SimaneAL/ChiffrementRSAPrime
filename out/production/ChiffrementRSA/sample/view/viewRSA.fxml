@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1450.0" style="-fx-background-color: #272727;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
     <children>
-        <Label layoutX="59.0" layoutY="14.0" prefHeight="47.0" prefWidth="313.0" style="-fx-border-color: #fce200; -fx-border-radius: 5;" text=" RSA the cryptosystem" textAlignment="CENTER" textFill="#fce200">
+        <Label layoutX="59.0" layoutY="14.0" prefHeight="47.0" prefWidth="313.0" style="-fx-border-color: #fce200; -fx-border-radius: 5;" text=" The cryptosystems" textAlignment="CENTER" textFill="#fce200">
             <font>
                 <Font name="MV Boli" size="26.0" />
             </font>
@@ -53,7 +48,7 @@
                 <Insets bottom="15.0" left="10.0" right="15.0" top="15.0" />
             </padding>
         </Label>
-        <Label layoutY="446.0" prefHeight="63.0" prefWidth="351.0" style="-fx-border-radius: 5;" text="Encrypte/decrypte files :" textAlignment="RIGHT" textFill="#ff652f">
+        <Label layoutY="446.0" prefHeight="76.0" prefWidth="407.0" style="-fx-border-radius: 5;" text="Encrypte/decrypte files : RSA" textAlignment="RIGHT" textFill="#ff652f">
             <font>
                 <Font name="MV Boli" size="26.0" />
             </font>
@@ -88,7 +83,7 @@
             <font>
                 <Font name="MV Boli" size="14.0" />
             </font></Button>
-        <Label fx:id="notifs" layoutX="958.0" layoutY="263.0" prefHeight="159.0" prefWidth="492.0" textFill="#fcfcfc">
+        <Label fx:id="notifs" layoutX="958.0" layoutY="263.0" prefHeight="252.0" prefWidth="345.0" textFill="#fcfcfc">
          <font>
             <Font name="MV Boli" size="12.0" />
          </font></Label>
