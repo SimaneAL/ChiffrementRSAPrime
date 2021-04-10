@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("view/viewRSA.fxml"));
         primaryStage.setTitle("RSA ");
-        primaryStage.setScene(new Scene(root, 1250, 707));
+        primaryStage.setScene(new Scene(root, 1450, 707));
         primaryStage.show();
     }
 
